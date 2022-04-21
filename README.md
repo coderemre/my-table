@@ -1,5 +1,7 @@
 # my-table
 
+### `yarn`
+##
 ### `yarn dev`
 
 Local: http://localhost:3000
