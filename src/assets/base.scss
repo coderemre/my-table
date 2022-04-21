@@ -1,0 +1,472 @@
+/* color palette from <https://github.com/vuejs/theme> */
+:root {
+  --white: #ffff;
+  --teal: #37474f;
+
+  --backgroundcolor: #ffffff;
+  --backgroundcolor2: #0d0d0d88;
+  --modalBGColor: #21212199;
+  --modalBGColor2: #30313699;
+  --color: #6e6f72;
+  --aColor: #ffff;
+  --h1Color: #303136;
+  --h2Color: #303136;
+  --h3Color: #4b4b4b;
+  --pColor: #9b9b9b;
+  --primaryColor: #009688;
+  --secondaryColor: #303136;
+  --lightColor: #d6d6d6;
+  --darkColor: #6e6f72;
+
+  --dangerColor: #eb5757;
+  --errorColor: #eb5757;
+  --successColor: #398f4f;
+  --alertColor: #fd9a10;
+
+  --borderColor: #95969a;
+  --borderColor2: #818286;
+  --borderColor3: #d1d6df;
+
+  --vt-c-white: #ffffff;
+  --vt-c-white-soft: #f8f8f8;
+  --vt-c-white-mute: #f2f2f2;
+
+  --vt-c-black: #181818;
+  --vt-c-black-soft: #222222;
+  --vt-c-black-mute: #282828;
+
+  --vt-c-indigo: #2c3e50;
+
+  --vt-c-divider-light-1: rgba(60, 60, 60, 0.29);
+  --vt-c-divider-light-2: rgba(60, 60, 60, 0.12);
+  --vt-c-divider-dark-1: rgba(84, 84, 84, 0.65);
+  --vt-c-divider-dark-2: rgba(84, 84, 84, 0.48);
+
+  --vt-c-text-light-1: var(--vt-c-indigo);
+  --vt-c-text-light-2: rgba(60, 60, 60, 0.66);
+  --vt-c-text-dark-1: var(--vt-c-white);
+  --vt-c-text-dark-2: rgba(235, 235, 235, 0.64);
+}
+
+/* semantic color variables for this project */
+:root {
+  --color-background: var(--vt-c-white);
+  --color-background-soft: var(--vt-c-white-soft);
+  --color-background-mute: var(--vt-c-white-mute);
+
+  --color-border: var(--vt-c-divider-light-2);
+  --color-border-hover: var(--vt-c-divider-light-1);
+
+  --color-heading: var(--vt-c-text-light-1);
+  --color-text: var(--vt-c-text-light-1);
+
+  --section-gap: 160px;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-background: var(--vt-c-black);
+    --color-background-soft: var(--vt-c-black-soft);
+    --color-background-mute: var(--vt-c-black-mute);
+
+    --color-border: var(--vt-c-divider-dark-2);
+    --color-border-hover: var(--vt-c-divider-dark-1);
+
+    --color-heading: var(--vt-c-text-dark-1);
+    --color-text: var(--vt-c-text-dark-2);
+  }
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  position: relative;
+  font-weight: normal;
+}
+
+body {
+  min-height: 100vh;
+  color: var(--color-text);
+  background: var(--color-background);
+  transition: color 0.5s, background-color 0.5s;
+  line-height: 1.6;
+  font-family: Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+    Oxygen, Ubuntu, Cantarell, 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  font-size: 15px;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.primary {
+  --bg-color: var(--primaryColor);
+  --color: var(--white);
+  --border-color: var(--primaryColor);
+  --hover-color: var(--primaryColor);
+  --hover-bg-color: var(--white);
+}
+.success {
+  --bg-color: var(--successColor);
+  --color: var(--white);
+  --border-color: var(--successColor);
+  --hover-color: var(--successColor);
+  --hover-bg-color: var(--white);
+}
+.alert {
+  --bg-color: var(--alertColor);
+  --color: var(--white);
+  --border-color: var(--alertColor);
+  --hover-color: var(--alertColor);
+  --hover-bg-color: var(--white);
+}
+.danger {
+  --bg-color: var(--dangerColor);
+  --color: var(--white);
+  --border-color: var(--dangerColor);
+  --hover-color: var(--dangerColor);
+  --hover-bg-color: var(--white);
+}
+
+@mixin btn() {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-left: 20px;
+  padding-right: 20px;
+  margin: 10px 0;
+  height: 44px;
+  text-decoration: none;
+  color: var(--color);
+  background-color: var(--bg-color);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  white-space: nowrap;
+  font-family: inherit;
+  font-size: 18px;
+  font-weight: 400;
+  user-select: none;
+  cursor: pointer;
+  -webkit-appearance: none;
+  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
+    border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  &:disabled {
+    opacity: 0.7;
+    cursor: default;
+  }
+  &:hover {
+    color: var(--hover-color);
+    background-color: var(--hover-bg-color);
+  }
+}
+
+.btn {
+  @include btn();
+}
+.btn-small {
+  @include btn();
+  font-size: 14px;
+  line-height: 20px;
+  padding-top: 2px;
+  padding-left: 10px;
+  padding-right: 10px;
+  font-weight: 400;
+}
+.btn-medium {
+  @include btn();
+  font-size: 14px;
+  height: 28px;
+  padding-left: 12px;
+  padding-right: 12px;
+}
+
+.max {
+  width: 100%;
+  margin: 0 auto;
+}
+
+.w1280 {
+  max-width: 1280px;
+}
+.w960 {
+  max-width: 960px;
+}
+.w560 {
+  max-width: 560px;
+}
+.w480 {
+  max-width: 480px;
+}
+
+.m-0 {
+  margin: 0 !important;
+}
+.m-10 {
+  margin: 10px !important;
+}
+.m-20 {
+  margin: 20px !important;
+}
+
+.m-left-0 {
+  margin-left: 0 !important;
+}
+.m-left-5 {
+  margin-left: 5px !important;
+}
+.m-left-10 {
+  margin-left: 10px !important;
+}
+.m-left-20 {
+  margin-left: 20px !important;
+}
+.m-left-30 {
+  margin-left: 30px !important;
+}
+.m-left-40 {
+  margin-left: 40px !important;
+}
+.m-right-0 {
+  margin-right: 0 !important;
+}
+.m-right-5 {
+  margin-right: 5px !important;
+}
+.m-right-10 {
+  margin-right: 10px !important;
+}
+.m-right-20 {
+  margin-right: 20px !important;
+}
+.m-right-40 {
+  margin-right: 40px !important;
+}
+.m-top-0 {
+  margin-top: 0 !important;
+}
+.m-top-5 {
+  margin-top: 5px !important;
+}
+.m-top-10 {
+  margin-top: 10px !important;
+}
+.m-top-20 {
+  margin-top: 20px !important;
+}
+.m-top-30 {
+  margin-top: 30px !important;
+}
+.m-top-40 {
+  margin-top: 40px !important;
+}
+
+.m-bottom-0 {
+  margin-bottom: 0 !important;
+}
+.m-bottom-5 {
+  margin-bottom: 5px !important;
+}
+.m-bottom-10 {
+  margin-bottom: 10px !important;
+}
+.m-bottom-20 {
+  margin-bottom: 20px !important;
+}
+.m-bottom-30 {
+  margin-bottom: 30px !important;
+}
+.m-bottom-40 {
+  margin-bottom: 40px !important;
+}
+.p-0 {
+  padding: 0 !important;
+}
+.p-10 {
+  padding: 10px;
+}
+.p-20 {
+  padding: 20px;
+}
+.p-30 {
+  padding: 30px;
+}
+.p-40 {
+  padding: 40px;
+}
+
+.p-top-5 {
+  padding-top: 5px !important;
+}
+.p-top-10 {
+  padding-top: 10px !important;
+}
+.p-top-20 {
+  padding-top: 20px !important;
+}
+.p-top-40 {
+  padding-top: 40px !important;
+}
+.p-top-40 {
+  padding-top: 40px !important;
+}
+
+.p-bottom-5 {
+  padding-bottom: 5px !important;
+}
+.p-bottom-10 {
+  padding-bottom: 10px !important;
+}
+.p-bottom-20 {
+  padding-bottom: 20px !important;
+}
+.p-bottom-40 {
+  padding-bottom: 40px !important;
+}
+.p-bottom-40 {
+  padding-bottom: 40px !important;
+}
+
+.p-left-5 {
+  padding-left: 5px !important;
+}
+.p-left-10 {
+  padding-left: 10px !important;
+}
+.p-left-40 {
+  padding-left: 40px !important;
+}
+.p-left-40 {
+  padding-left: 40px !important;
+}
+
+.p-right-5 {
+  padding-right: 5px !important;
+}
+.p-right-10 {
+  padding-right: 10px !important;
+}
+.p-right-20 {
+  padding-right: 20px !important;
+}
+.p-right-40 {
+  padding-right: 40px !important;
+}
+
+.flex {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.f-row {
+  flex-direction: row;
+}
+
+.grid {
+  display: grid;
+}
+.col-2 {
+  grid-template-columns: 1fr 1fr;
+}
+.col-3 {
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+.col-4 {
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+
+.col-5 {
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+}
+.col-6 {
+  grid-template-columns: repeat(6, 1fr);
+}
+.col-1-9 {
+  grid-template-columns: 1fr 8fr;
+}
+.col-2-9 {
+  grid-template-columns: 2fr 7fr;
+}
+.col-3-9 {
+  grid-template-columns: 3fr 6fr;
+}
+.col-4-9 {
+  grid-template-columns: 4fr 5fr;
+}
+
+.col-gap-5 {
+  column-gap: 5px;
+}
+.col-gap-10 {
+  column-gap: 10px;
+}
+
+.col-gap-20 {
+  column-gap: 20px;
+}
+.col-gap-40 {
+  column-gap: 40px;
+}
+.row-gap-5 {
+  row-gap: 5px;
+}
+.row-gap-10 {
+  row-gap: 10px;
+}
+
+.row-gap-20 {
+  row-gap: 20px;
+}
+.row-gap-40 {
+  row-gap: 40px;
+}
+.gap-5 {
+  gap: 5px;
+}
+.gap-10 {
+  gap: 10px;
+}
+.gap-20 {
+  gap: 20px;
+}
+
+.bold {
+  font-weight: 700;
+}
+
+@mixin input() {
+  width: 100%;
+  font-family: inherit;
+  border-radius: var(--radius);
+  border: 1px solid var(--borderColor2);
+  height: 44px;
+  margin: 5px 0;
+  padding-left: 14px;
+  padding-right: 14px;
+  font-size: 16px;
+  -webkit-appearance: none;
+}
+
+input {
+  @include input();
+}
+
+.input-small {
+  @include input();
+  margin: 2px 0;
+  height: 28px;
+  padding-left: 8px;
+  padding-right: 8px;
+  font-size: 14px;
+}
+.input-medium {
+  @include input();
+  margin: 3px 0;
+  height: 32px;
+  padding-left: 12px;
+  padding-right: 12px;
+  font-size: 15px;
+}
